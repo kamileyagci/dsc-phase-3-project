@@ -293,6 +293,8 @@ The evaluation metrics for final, XGBoost model:
 * Among the model predicted churn customers, 95% of them are true churn customers. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 83%.
 
+('churn': activity of customers leaving the company and discarding the services offered)
+
 The confusion matrix for final, XGBoost model:
 
 <img src="/images/confusion_matrix_XGB.png" width=550/>
