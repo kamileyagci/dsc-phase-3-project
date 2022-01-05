@@ -133,7 +133,7 @@ Since my business problem is focusing on identfying the customers who stop doing
 
 ### Logistic Regression
 
-I started with Logistic Regression. I instantiated the model with default parameters and fit on training data. Then I checked the evaluation metrics both for training and testing data.
+I started modeling with Logistic Regression classifier (LogisticRegression). I instantiated the model with default parameters and fit on training data. Then I checked the evaluation metrics both for training and testing data.
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
@@ -174,9 +174,33 @@ After resampling, the Logistic Regression Model performance (f1-score and recall
 I initially used the default paremeters for the Logistic Regression model. I then applied parameter tuning with GridSearchCV. It determined the best parameter combination for the given parameter grid. I used the f1-score for tuning. 
 
 The results of parameter tuning:
-
 * f1-score for test data: 0.5166240409207161
 * Best Parameter Combination: {'C': 0.001, 'solver': 'liblinear'}
+
+It looks like the parameter tuning, with the given parameter grid, didn't improve the performance of Logistic Regression much. The f1-score didn't change.
+
+### K-Nearest Neighbors
+
+My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the resampled training data for fitting the model.
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.64 | .99 | 0.47 | 0.84
+| Test | 0.39 | .62 | 0.29 | 0.71
+
+Observations:
+
+* The performance in training data is better than test data. This is a sign of overfitting.
+* The fitting on resampled training data has a better performance. The f1-score for test data increased from 0.15 to 0.39. (The results for resampled data is not shown here, but tested).
+
+Then, I used GridSearchCV for parameter tuning.
+
+The results of parameter tuning:
+* f1-score for test data: 0.27751196172248804
+* Best Parameter Combination: {'n_neighbors': 1, 'p': 4}
+
+Parameter tuning, with the given parameter ranges, didn't improve the KNN model performance. Actually, f1-score decreased. Why? 
+
 
 
 
