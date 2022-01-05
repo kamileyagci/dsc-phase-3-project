@@ -11,8 +11,8 @@ The telecommincation company, SyriaTel, hired me to analyze the Chustomer Churn 
 
 This study will
 
-Search for the predictable pattern for customer decision on stop or continue doing business with SyriaTel
-Choose a model which will best identify the customers who will stop doing business with SyriaTel
+* Search for the predictable pattern for customer decision on stop or continue doing business with SyriaTel
+* Choose a model which will best identify the customers who will stop doing business with SyriaTel
 
 
 ## Method
@@ -43,6 +43,8 @@ The file name is 'bigml_59c28831336c6604c800002a.csv'.
 
 Tha raw data has 3333 entries and 21 columns.
 
+### Scrub/Explore
+
 The column/variable names are:
 * state            
 * account length
@@ -68,7 +70,7 @@ The column/variable names are:
 
 The data doesn't have any missing values.
 
-I removed the column 'phone number' from dataset. Most digits in the phone number are random, and it will not have much use in modeling. This variable will also be a problem in dummy variable creation, because all values are be unique.
+I removed the column 'phone number' from dataset. Most digits in the phone number are random, and it will not have much use in modeling. This variable will also be a problem in dummy variable creation, because each phone number value is unique.
 
 The distribution of variables are shown below. Click on the plot to see them closer.
 
@@ -82,28 +84,34 @@ The scatter graphs for 'churn' vs predictors are shown below. Click on the plot 
 
 ![Scatters](/images/scatters_All_zoom.png)
 
+It is hard to recognize any patterns or correlation for 'churn' in these plots.
+
+We will now look at the models to derive patterns and predictions.
+
 
 ## Model
 
-### Pre-process
-
 In this study, we are trying to predict customer's decision on stopping the business with the company. The prediction will be True (1) or False (1). Therefore we will use binary classification model.
+
+### Pre-process
 
 Before modeling, I divided the dataset into target data series (y) and predictor dataframe (X).
 
-y: DataSeries of 'churn' 
-X: DataFrame of all predictors
+* y: DataSeries of 'churn' 
+* X: DataFrame of all predictors
 
-I also created dummy variables from categorical variables. The ned X DataFrame has 73 variables together with dummies.
+I also created dummy variables from categorical variables. The X DataFrame has 73 variables together with dummies.
 
 Then, I seperated the data into train and test splits. I allocated 25% of the data for testing. I also assigned a random state for repeatability.
 
 The shape of the splits:
 
-X_train shape =  (2499, 73)
-y_train shape =  (2499,)
-X_test shape =  (834, 73)
-y_test shape =  (834,)
+* X_train shape =  (2499, 73)
+* y_train shape =  (2499,)
+* X_test shape =  (834, 73)
+* y_test shape =  (834,)
+
+shape = (number of rows/entries, number of columns/variables)
 
 The next step is standardization. The data values have different ranges, so I did normalize/scale each variable in train and test data (X) before modeling. I used Scikit-Learn StandardScaler.
 
@@ -140,9 +148,9 @@ I started modeling with Logistic Regression classifier (LogisticRegression). I i
 | Train | 0.37 | .27 | 0.64 | 0.85
 | Test | 0.32 | .22 | 0.56 | 0.86
 
-* The metrics look similar for both training and testing data, so no overfitting or underfitting.
+* The metrics look similar for both training and testing data, just training is a bit better; so slight overfitting.
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
-* The high accuracy score is misleading. It is caused by the imbalanced dataset.
+* The high accuracy score is high, but misleading. It is caused by the imbalanced dataset.
 
 Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
 
@@ -151,16 +159,16 @@ Class imbalance effects the performance of the classification model. I have look
 | churn = 0 | 2850 | 0.855 
 | churn = 1 | 483 | 0.145 
 
-According to the dataset, 85.5% of the customers do continue with SyriaTel and 14.5% of customers stop business. If we make a prediction that, all customers will continue, then we will have about 85.5% accuracy. This explains the high accuracy score of the model, despite the other low metric values.
+According to the dataset, 85.5% of the customers do continue with SyriaTel and 14.5% of customers stop business. If we make a prediction saying all customers will continue business, then we will have about 85.5% accuracy. This explains the high accuracy score of the model, despite the other low metric values.
 
 I used SMOTE to create a synthetic training sample to take care of imbalance. After the resampling, the value counts in each class, in training data sample, became equal.
 
-| | Original training data value counts | Synthetic training data value counts|
+| | Original training data, Value counts | Synthetic training data, Value counts|
 | :- | -: | :-: |
 | churn = 0 | 2141 | 2141 
 | churn = 1 | 358 | 2141 
 
-I have then reapplied the Logistic Regression after using the resampled training data.
+I have then reapplied the Logistic Regression, using the resampled training data. The results:
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
@@ -187,7 +195,7 @@ My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the res
 | Test | 0.39 | .62 | 0.29 | 0.71
 
 * The performance in training data is better than test data. This is a sign of overfitting.
-* The fitting on resampled training data has a better performance than unsampled data. The f1-score for test increased from 0.15 to 0.39. (The results for unsampled data is not shown here, but tested).
+* The fitting on resampled training data has a better performance than unsampled data. The f1-score for test increased from 0.15 to 0.39. (The full results for unsampled data is not shown here).
 
 Then, I used GridSearchCV for parameter tuning. The results of parameter tuning:
 * f1-score for test data: 0.27751196172248804
@@ -279,7 +287,7 @@ Here are my observations based on evaluation metrics and AUC:
 * accuracy: Decision Trees, Random Forest and XGBoost are top three
 * AUC: Random Forest and XGBoost have better value
 
-The results showed that XGBoost classifier has the best performance in all aspects. It also has the best recall and f1 score, which matters most for my study. 
+The results showed that XGBoost classifier has the best performance in all aspects. It also has the best 'recall' and 'f1-score', which matters most for my study. 
 
 **I choose the XGBoost model as my final model.**
 
@@ -304,9 +312,9 @@ The confusion matrix for final, XGBoost model:
     * Number of true negatives: 704
     * Number of false positives: 5
     * Number of false negatives: 33
-* The final model identifies 92 out of 125 churn customers correctly.
-* 92 out of 97 predicted  churn customers are real churn.
-
+* The final model identifies 92 out of 125 churn customers correctly (74% recall).
+* 92 out of 97 predicted  churn customers are real churn (95% precision).
+ 
 
 ## Future Work
 
@@ -314,4 +322,5 @@ The confusion matrix for final, XGBoost model:
     * Search each parameter seperately to undestand the effect on performance
     * Obtain a more sensitive range for each parameter to be used in grid search
     * Study the effect of other hyperparameters
-* Repeat parameter tuning with 'recall' metric for scoring
+* Repeat parameter tuning with 'recall' metric for scoring. Will it decrease the precision significantly? 
+    * Maybe use multiparameter, recall and f1-score for tuning?
