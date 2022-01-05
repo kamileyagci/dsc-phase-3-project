@@ -250,9 +250,13 @@ I also plotted ROC curves and calculated AUC for each model.
 
 I used the optimal/best parameter set selected by the GridSearchCV to instantiate my models.
 
-The ROC Curve for training data:
+**The evaluation metrics and ROC Curve for training data:**
+![metrics-Train](/images/metrics_Train.png)   
+![ROC-Train](/images/ROC_Curve_Training.png)    
 
-![ROC-Train](/images/ROC_Curve_Training.png)    ![ROC-Test](/images/ROC_Curve_Testing.png)
+**The evaluation metrics and ROC Curve for training data:**
+![metrics-Test](/images/metrics_Test.png)
+![ROC-Test](/images/ROC_Curve_Testing.png)
 
 
 ## Interpret
