@@ -140,8 +140,6 @@ I started modeling with Logistic Regression classifier (LogisticRegression). I i
 | Train | 0.37 | .27 | 0.64 | 0.85
 | Test | 0.32 | .22 | 0.56 | 0.86
 
-My observations:
-
 * The metrics look similar for both training and testing data, so no overfitting or underfitting.
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
 * The high accuracy score is misleading. It is caused by the imbalanced dataset.
@@ -188,7 +186,6 @@ My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the res
 | Train | 0.64 | .99 | 0.47 | 0.84
 | Test | 0.39 | .62 | 0.29 | 0.71
 
-Observations:
 * The performance in training data is better than test data. This is a sign of overfitting.
 * The fitting on resampled training data has a better performance than unsampled data. The f1-score for test increased from 0.15 to 0.39. (The results for unsampled data is not shown here, but tested).
 
@@ -201,6 +198,72 @@ Parameter tuning, with the given parameter ranges, didn't improve the KNN model 
 ### Decision Tress
 I firstly used DecisionTreeClassifier with default parameters, then applied GridSearchCV to find the optimum parameteres.
 
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 1.00 | 1.00 | 1.00 | 1.00
+| Test | 0.75 | .75 | 0.75 | 0.93
+
+The results of parameter tuning:
+* f1-score for test data: 0.8088888888888889
+* Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'min_samples_split': 6}
+
+The parameter tuning significantly improved the Decision Trees performance.
+
+### Random Forests
+Next, I used ensemble method Random Forests (RandomForestClassifier), which uses DecisionTreeClassifier.
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 1.00 | 1.00 | 1.00 | 1.00
+| Test | 0.77 | .63 | 0.98 | 0.94
+
+The results of parameter tuning:
+* f1-score on test data: 0.7326732673267325
+* Best Parameter Combination: {'criterion': 'gini', 'max_depth': None, 'max_features': 8, 'min_samples_split': 3, 'n_estimators': 100}
+
+The paremeter tuning didn't improve the performance of Random Forest model.
+
+### XGBoost
+Last, I used another ensemble method XGBoost (XGBClassifier).
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 1.00 | 1.00 | 1.00 | 1.00
+| Test | 0.83 | .74 | 0.94 | 0.95
+
+The results of parameter tuning:
+* f1-score on test data: 0.8288288288288288
+* Best Parameter Combination: {'learning_rate': 0.1, 'max_depth': 10, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
+
+The parameter tuning didn't effect the XGBoost performance much.
+
+### Compare the models
+
+I compared the classification models to choose the best one that identifies the customers who will study doing business with SyriaTel . 
+
+I looked at the evaluation metrics like precision, recall, accuracy and f1. 
+
+I also plotted ROC curves and calculated AUC for each model.
+
+* ROC: Receiver Operating Characteristic curve illustrates the true positive rate against the false positive rate.
+* AUC: Area Under Curve
+
+I used the optimal/best parameter set selected by the GridSearchCV to instantiate my models.
+
+------------
+**Optimum parameter sets, with f1-score used for tuning** 
+
+Logictic Regression: {'C': 0.001, 'solver': 'liblinear'}  (with resampled data)
+
+KNN: Default  (with resampled data)
+
+Decision Trees: {'criterion': 'gini', 'max_depth': 6, 'min_samples_split': 6}
+
+Random Forest: {'criterion': 'gini', 'max_depth': None, 'max_features': 8, 'min_samples_split': 3, 'n_estimators': 100}
+
+XGBoost: {'learning_rate': 0.1, 'max_depth': 10, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
+
+------------
 
 
 ## Interpret
