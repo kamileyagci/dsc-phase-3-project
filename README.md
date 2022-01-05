@@ -1,7 +1,7 @@
 # SyriaTel Customer Churn Study
 
 **Author: Kamile Yagci**
-
+**Blog URL: https://kamileyagci.github.io/**
 
 ## Overview
 In this study, I will analyze the 'SyriaTel Customer Churn' data. The SyriaTel is a telecommunication company. The purpose of the study is to predict whether a customer will ("soon") stop doing business with SyriaTel.
@@ -322,5 +322,6 @@ The confusion matrix for final, XGBoost model:
     * Search each parameter seperately to undestand the effect on performance
     * Obtain a more sensitive range for each parameter to be used in grid search
     * Study the effect of other hyperparameters
-* Repeat parameter tuning with 'recall' metric for scoring. Will it decrease the precision significantly? 
+* Study the parameter tuning with different scoring?
+    * Try 'recall' metric for tuning. Will it decrease the precision significantly? 
     * Maybe use multiparameter, recall and f1-score for tuning?
