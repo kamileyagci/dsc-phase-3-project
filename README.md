@@ -71,16 +71,15 @@ The data doesn't have any missing values.
 I removed the column 'phone number' from dataset. Most digits in the phone number is random, and it will not have much use in modeling. This variable will also be a problem in dummy variable creation, because all values will be unique.
 
 The distribution of variables:
+<img src="/images/histograms_All.png" width=1000/>
 
-![Histograms](/images/histograms_All.png)
-
+<! comment !>
 
 The target variable for this study is 'churn'. The rest of the variables in the dataset will be predictors. 
 
 'churn': activity of customers leaving the company and discarding the services offered
 
 The scatter graphs for 'churn' vs predictors:
-
 ![Scatters](/images/scatters_All.png)
 
 
