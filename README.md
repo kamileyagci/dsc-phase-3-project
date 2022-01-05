@@ -181,7 +181,7 @@ It looks like the parameter tuning, with the given parameter grid, didn't improv
 
 ### K-Nearest Neighbors
 
-My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the resampled training data for fitting the model.
+My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the resampled training data for fitting the model with default parameters.
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
@@ -189,18 +189,17 @@ My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the res
 | Test | 0.39 | .62 | 0.29 | 0.71
 
 Observations:
-
 * The performance in training data is better than test data. This is a sign of overfitting.
-* The fitting on resampled training data has a better performance. The f1-score for test data increased from 0.15 to 0.39. (The results for resampled data is not shown here, but tested).
+* The fitting on resampled training data has a better performance than unsampled data. The f1-score for test increased from 0.15 to 0.39. (The results for unsampled data is not shown here, but tested).
 
-Then, I used GridSearchCV for parameter tuning.
-
-The results of parameter tuning:
+Then, I used GridSearchCV for parameter tuning. The results of parameter tuning:
 * f1-score for test data: 0.27751196172248804
 * Best Parameter Combination: {'n_neighbors': 1, 'p': 4}
 
 Parameter tuning, with the given parameter ranges, didn't improve the KNN model performance. Actually, f1-score decreased. Why? 
 
+### Decision Tress
+I firstly used DecisionTreeClassifier with default parameters, then applied GridSearchCV to find the optimum parameteres.
 
 
 
