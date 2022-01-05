@@ -289,14 +289,14 @@ The evaluation metrics for final, XGBoost model:
 | :- | -: | :-: | :-: | :-: |
 | Test | 0.83 | .74 | 0.94 | 0.95
 
-The confusion matrix for final, XGBoost model:
-
-<img src="/images/confusion_matrix_XGB.png" width=550/>
-
 The summary of XGBoost Classifier Model performance:
 * It successfully indentifies the 74% of the true churn customers. (recall)
 * Among the model predicted churn customers, 95% of them are true churn customers. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 83%.
+
+The confusion matrix for final, XGBoost model:
+
+<img src="/images/confusion_matrix_XGB.png" width=550/>
 
 The test data statistics with final model prediction:
 * Identification counts:
