@@ -146,6 +146,15 @@ My observations:
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
 * The high accuracy score is misleading. It is caused by the imbalanced dataset.
 
+Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
+
+| | Counts | Normalized |
+| :- | -: | :-: |
+| churn = 0 | 2850 | 483 
+| churn = 1 | 0.855 | 0.145 
+
+
+
 ## Interpret
 
 
