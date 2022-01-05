@@ -68,7 +68,7 @@ The column/variable names are:
 
 The data doesn't have any missing values.
 
-I removed the column 'phone number' from dataset. Most digits in the phone number is random, and it will not have much use in modeling. This variable will also be a problem in dummy variable creation, because all values will be unique.
+I removed the column 'phone number' from dataset. Most digits in the phone number are random, and it will not have much use in modeling. This variable will also be a problem in dummy variable creation, because all values are be unique.
 
 The distribution of variables are shown below. Click on the plot to see them closer.
 
