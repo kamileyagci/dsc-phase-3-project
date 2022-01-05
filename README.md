@@ -252,12 +252,14 @@ I used the optimal/best parameter set selected by the GridSearchCV to instantiat
 
 #### The evaluation metrics and ROC Curve for training data:
 
-<img src="/images/metrics_Train.png" width=550/>  
+<img src="/images/metrics_Train.png" width=600/>  
+
 ![ROC-Train](/images/ROC_Curve_Training.png)    
 
 #### The evaluation metrics and ROC Curve for training data:
 
-<img src="/images/metrics_Test.png" width=550/>
+<img src="/images/metrics_Test.png" width=600/>
+
 ![ROC-Test](/images/ROC_Curve_Testing.png)
 
 
