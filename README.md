@@ -80,7 +80,6 @@ The target variable for this study is 'churn'. The rest of the variables in the 
 The scatter graphs for 'churn' vs predictors are shown below. Click on the plot to see them closer.
 ![Scatters](/images/scatters_All.png)
 
-
 ## Model
 
 ### Pre-process
