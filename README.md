@@ -252,7 +252,8 @@ I used the optimal/best parameter set selected by the GridSearchCV to instantiat
 
 #### The evaluation metrics and ROC Curve for training data:
 
-<img src="/images/metrics_Train.png" width=550/>  
+<img src="/images/metrics_Train.png" width=550/>
+
 ![ROC-Train](/images/ROC_Curve_Training.png)    
 
 #### The evaluation metrics and ROC Curve for training data:
@@ -263,6 +264,52 @@ I used the optimal/best parameter set selected by the GridSearchCV to instantiat
 
 
 ## Interpret
+
+Let's interpret our results in the light of our business questions:
+* Search for the predictable pattern for customer decision on stop or continue doing business with SyriaTel
+* Choose a model which will best identify the customers who will stop doing business with SyriaTel
+
+All of my models showed some pattern for customer decision on stop or continue doing business. They also did predictions to identify the customers who will discontinue service (churn customers).  
+
+Which model is best on identinfying churn customers?
+
+I use the test data evaluation results to do final model comparisons.
+
+Here are my observations based on evaluation metrics and AUC:
+* Overall performance: Decision Trees, Random Forest and XGBoost are top three.
+* f1-score: Decision Trees, Random Forest and XGBoost are best
+* recall: Decision Trees and XGBoost have better scores
+* precision: Random Forest and XGBoost are best
+* accuracy: Decision Trees, Random Forest and XGBoost are top three
+* AUC: Random Forest and XGBoost have better value
+
+The results showed that XGBoost classifier has the best performance in all aspects. It also has the best recall and f1 score, which matters most for my study. 
+
+I choose the XGBoost model as my final model. 
+
+The evaluation metrics for final, XGBoost model:
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Test | 0.83 | .74 | 0.94 | 0.95
+
+The confusion matrix for final, XGBoost model:
+
+![confusion_matrix](/images/confusion_matrix_XGB.png)
+
+The summary of XGBoost Classifier Model performance:
+* It successfully indentifies the 74% of the true churn customers. (recall)
+* Among the model predicted churn customers, 95% of them are true churn customers. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 83%.
+
+The identification numbers on test data:
+* Identification numbers:
+    ** Number of true positives: 92
+    ** Number of true negatives: 704
+    ** Number of false positives: 5
+    ** Number of false negatives: 33
+* It identifies 92 out of 125 churn customers correctly.
+* 92 out of 97 predicted  churn customers are real churn.
 
 
 ## Future Work
