@@ -8,7 +8,7 @@
 In this study, I analyzed the 'SyriaTel Customer Churn' data. The SyriaTel is a telecommunication company. The purpose of the study is to predict whether a customer will ("soon") stop doing business with SyriaTel.
 
 ## Business Problem
-The telecommincation company, SyriaTel, hired me to analyze the Chustomer Churn data. The company wants to understand the customer's decision to discontinue their business with SyriaTel. The results of the analysis will be used make business decisions for improving the company finances.
+The telecommincation company, SyriaTel, hired me to analyze the Customer Churn data. The company wants to understand the customer's decision to discontinue their business with SyriaTel. The results of the analysis will be used make business decisions for improving the company finances.
 
 This study will
 
@@ -92,7 +92,7 @@ We will now look at the models to derive patterns and predictions.
 
 ## Model
 
-In this study, we are trying to predict customer's decision on stopping the business with the company. The prediction will be True (1) or False (1). Therefore we will use binary classification model.
+In this study, we are trying to predict customer's decision on stopping the business with the company. The prediction will be True (1) or False (0). Therefore we will use binary classification model.
 
 ### Pre-process
 
