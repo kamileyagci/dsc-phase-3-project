@@ -135,11 +135,16 @@ Since my business problem is focusing on identfying the customers who stop doing
 
 I started with Logistic Regression. I instantiated the model with default parameters and fit on training data. Then I checked the evaluation metrics both for training and testing data.
 
-| | f1-score | recall |
-| :- | -: | :-: |
-| Train | 0.37 | .27 
-| Test | 0.32 | .22
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.37 | .27 | 0.64 | 0.85
+| Test | 0.32 | .22 | 0.56 | 0.86
 
+My observations from the printed results:
+
+The metrics look similar for both training and testing data, so no overfitting or underfitting.
+The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
+The high accuracy score is misleading. It is caused by the imbalanced dataset.
 
 ## Interpret
 
