@@ -148,11 +148,19 @@ My observations:
 
 Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
 
-| | Counts | Normalized |
+| | Value Counts | Normalized|
 | :- | -: | :-: |
-| churn = 0 | 2850 | 483 
-| churn = 1 | 0.855 | 0.145 
+| churn = 0 | 2850 | 0.855 
+| churn = 1 | 483 | 0.145 
 
+According to the dataset, 85.5% of the customers do continue with SyriaTel and 14.5% of customers stop business. If we make a prediction that, all customers will continue, then we will have about 85.5% accuracy. This explains the high accuracy score of the model, despite the other low metric values.
+
+I used SMOTE to create a synthetic training sample to take care of imbalance. After the resmapling, the counts in each class, in training data sample, became equal.
+
+| | Original training data value counts | Synthetic training data value counts|
+| :- | -: | :-: |
+| churn = 0 | 2141 | 2141 
+| churn = 1 | 358 | 2141 
 
 
 ## Interpret
