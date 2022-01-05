@@ -315,6 +315,6 @@ The identification numbers on test data:
 ## Future Work
 
 * Improve the XGBT model performance with more detailed parameter tuning
-    ** Search each parameter seperately to undestand the effect on performance, and obtain a more sensitive range to be used in grid search
-    ** Study the effect of other hyperparameters
+    * Search each parameter seperately to undestand the effect on performance, and obtain a more sensitive range to be used in grid search
+    * Study the effect of other hyperparameters
 * Repeat parameter tuning with 'recall' metric for scoring
