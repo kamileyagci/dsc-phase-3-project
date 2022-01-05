@@ -250,20 +250,9 @@ I also plotted ROC curves and calculated AUC for each model.
 
 I used the optimal/best parameter set selected by the GridSearchCV to instantiate my models.
 
-------------
-**Optimum parameter sets, with f1-score used for tuning** 
+The ROC Curve for training data:
 
-Logictic Regression: {'C': 0.001, 'solver': 'liblinear'}  (with resampled data)
-
-KNN: Default  (with resampled data)
-
-Decision Trees: {'criterion': 'gini', 'max_depth': 6, 'min_samples_split': 6}
-
-Random Forest: {'criterion': 'gini', 'max_depth': None, 'max_features': 8, 'min_samples_split': 3, 'n_estimators': 100}
-
-XGBoost: {'learning_rate': 0.1, 'max_depth': 10, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
-
-------------
+![ROC-Train](/images/ROC_Curve_Training.png)    ![ROC-Test](/images/ROC_Curve_Testing.png)
 
 
 ## Interpret
