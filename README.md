@@ -297,12 +297,12 @@ The confusion matrix for final, XGBoost model:
 
 <img src="/images/confusion_matrix_XGB.png" width=550/>
 
-* Identification counts on test data:
+* Final model identification statistics on test data:
     * Number of true positives: 92
     * Number of true negatives: 704
     * Number of false positives: 5
     * Number of false negatives: 33
-* It identifies 92 out of 125 churn customers correctly.
+* The final model identifies 92 out of 125 churn customers correctly.
 * 92 out of 97 predicted  churn customers are real churn.
 
 
