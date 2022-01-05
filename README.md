@@ -250,13 +250,13 @@ I also plotted ROC curves and calculated AUC for each model.
 
 I used the optimal/best parameter set selected by the GridSearchCV to instantiate my models.
 
-#### The evaluation metrics and ROC Curve for training data:
+#### The evaluation metrics and ROC Curve for Training data:
 
 <img src="/images/metrics_Train.png" width=550/>
 
 ![ROC-Train](/images/ROC_Curve_Training.png)    
 
-#### The evaluation metrics and ROC Curve for training data:
+#### The evaluation metrics and ROC Curve for Test data:
 
 <img src="/images/metrics_Test.png" width=550/>
 
@@ -287,7 +287,7 @@ The evaluation metrics for final, XGBoost model:
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Test | 0.83 | .74 | 0.94 | 0.95
+| Test | 0.83 | .74 | 0.95 | 0.95
 
 * The final model successfully indentifies the 74% of the true churn customers. (recall)
 * Among the model predicted churn customers, 95% of them are true churn customers. (precision)
