@@ -132,6 +132,15 @@ f1-score:
 
 Since my business problem is focusing on identfying the customers who stop doing business, I am interested mainly on the 'recall' metrics. However, when optimizing my model, I should also pay attention to the 'precision'. I want my predictions to be true, to be precise. The recall and precision are inversely proportional. Therefore, I choose to  use the f1-score, Harmonic Mean of Precision and Recall, as the main metric for evaluating the performance of the model.
 
+### Logistic Regression
+
+I started with Logistic Regression. I instantiated the model with default parameters and fit on training data. Then I checked the evaluation metrics both for training and testing data.
+
+| | f1-score | recall |
+| :- | -: | :-: |
+| Train | 0.37 | .27 
+| Test | 0.32 | .22
+
 
 ## Interpret
 
