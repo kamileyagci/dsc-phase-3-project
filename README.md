@@ -1,6 +1,7 @@
 # SyriaTel Customer Churn Study
 
 **Author: Kamile Yagci**
+
 **Blog URL: https://kamileyagci.github.io/**
 
 ## Overview
