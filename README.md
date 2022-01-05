@@ -304,10 +304,10 @@ The summary of XGBoost Classifier Model performance:
 
 The identification numbers on test data:
 * Identification numbers:
-    ** Number of true positives: 92
-    ** Number of true negatives: 704
-    ** Number of false positives: 5
-    ** Number of false negatives: 33
+    * Number of true positives: 92
+    * Number of true negatives: 704
+    * Number of false positives: 5
+    * Number of false negatives: 33
 * It identifies 92 out of 125 churn customers correctly.
 * 92 out of 97 predicted  churn customers are real churn.
 
