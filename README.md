@@ -295,7 +295,7 @@ The evaluation metrics for final, XGBoost model:
 
 The confusion matrix for final, XGBoost model:
 
-<img src="/images/confusion_matrix_XGB.png" width=500/>
+<img src="/images/confusion_matrix_XGB.png" width=600/>
 
 The summary of XGBoost Classifier Model performance:
 * It successfully indentifies the 74% of the true churn customers. (recall)
@@ -314,3 +314,7 @@ The identification numbers on test data:
 
 ## Future Work
 
+* Improve the XGBT model performance with more detailed parameter tuning
+    ** Search each parameter seperately to undestand the effect on performance, and obtain a more sensitive range to be used in grid search
+    ** Study the effect of other hyperparameters
+* Repeat parameter tuning with 'recall' metric for scoring
