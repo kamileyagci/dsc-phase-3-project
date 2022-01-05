@@ -140,11 +140,11 @@ I started with Logistic Regression. I instantiated the model with default parame
 | Train | 0.37 | .27 | 0.64 | 0.85
 | Test | 0.32 | .22 | 0.56 | 0.86
 
-My observations from the printed results:
+My observations:
 
-The metrics look similar for both training and testing data, so no overfitting or underfitting.
-The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
-The high accuracy score is misleading. It is caused by the imbalanced dataset.
+* The metrics look similar for both training and testing data, so no overfitting or underfitting.
+* The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
+* The high accuracy score is misleading. It is caused by the imbalanced dataset.
 
 ## Interpret
 
