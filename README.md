@@ -265,15 +265,11 @@ I used the optimal/best parameter set selected by the GridSearchCV to instantiat
 
 ## Interpret
 
-Let's interpret our results in the light of our business questions:
-* Search for the predictable pattern for customer decision on stop or continue doing business with SyriaTel
-* Choose a model which will best identify the customers who will stop doing business with SyriaTel
-
 All of my models showed some pattern for customer decision on stop or continue doing business. They also did predictions to identify the customers who will discontinue service (churn customers).  
 
 Which model is best on identinfying churn customers?
 
-I use the test data evaluation results to do final model comparisons.
+I used the test data evaluation results to do model comparisons and choose the final model.
 
 Here are my observations based on evaluation metrics and AUC:
 * Overall performance: Decision Trees, Random Forest and XGBoost are top three.
@@ -285,7 +281,7 @@ Here are my observations based on evaluation metrics and AUC:
 
 The results showed that XGBoost classifier has the best performance in all aspects. It also has the best recall and f1 score, which matters most for my study. 
 
-I choose the XGBoost model as my final model. 
+**I choose the XGBoost model as my final model.**
 
 The evaluation metrics for final, XGBoost model:
 
@@ -302,8 +298,8 @@ The summary of XGBoost Classifier Model performance:
 * Among the model predicted churn customers, 95% of them are true churn customers. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 83%.
 
-The identification numbers on test data:
-* Identification numbers:
+The test data statistics with final model prediction:
+* Identification counts:
     * Number of true positives: 92
     * Number of true negatives: 704
     * Number of false positives: 5
@@ -315,6 +311,7 @@ The identification numbers on test data:
 ## Future Work
 
 * Improve the XGBT model performance with more detailed parameter tuning
-    * Search each parameter seperately to undestand the effect on performance, and obtain a more sensitive range to be used in grid search
+    * Search each parameter seperately to undestand the effect on performance
+    * Obtain a more sensitive range for each parameter to be used in grid search
     * Study the effect of other hyperparameters
 * Repeat parameter tuning with 'recall' metric for scoring
