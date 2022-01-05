@@ -148,19 +148,36 @@ My observations:
 
 Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
 
-| | Value Counts | Normalized|
+| | Value Counts in whole dataset | Normalized|
 | :- | -: | :-: |
 | churn = 0 | 2850 | 0.855 
 | churn = 1 | 483 | 0.145 
 
 According to the dataset, 85.5% of the customers do continue with SyriaTel and 14.5% of customers stop business. If we make a prediction that, all customers will continue, then we will have about 85.5% accuracy. This explains the high accuracy score of the model, despite the other low metric values.
 
-I used SMOTE to create a synthetic training sample to take care of imbalance. After the resmapling, the counts in each class, in training data sample, became equal.
+I used SMOTE to create a synthetic training sample to take care of imbalance. After the resampling, the value counts in each class, in training data sample, became equal.
 
 | | Original training data value counts | Synthetic training data value counts|
 | :- | -: | :-: |
 | churn = 0 | 2141 | 2141 
 | churn = 1 | 358 | 2141 
+
+I have then reapplied the Logistic Regression after using the resampled training data.
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.49 | .75 | 0.36 | 0.78
+| Test | 0.52 | .78 | 0.39 | 0.79
+
+After resampling, the Logistic Regression Model performance (f1-score and recall) is clearly improved.
+
+I initially used the default paremeters for the Logistic Regression model. I then applied parameter tuning with GridSearchCV. It determined the best parameter combination for the given parameter grid. I used the f1-score for tuning. 
+
+The results of parameter tuning:
+
+* f1-score for test data: 0.5166240409207161
+* Best Parameter Combination: {'C': 0.001, 'solver': 'liblinear'}
+
 
 
 ## Interpret
