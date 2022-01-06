@@ -319,10 +319,11 @@ The confusion matrix for final, XGBoost model:
 
 ## Future Work
 
-* Improve the XGBT model performance with more detailed parameter tuning
-    * Search each parameter seperately to undestand the effect on performance
-    * Obtain a more sensitive range for each parameter to be used in grid search
+* Improve the XGBT model (final model) performance 
+    * Search each parameter separately to understand the effect on performance
+    * Obtain a more sensitive/informed range for each parameter to be used in grid search
     * Study the effect of other hyperparameters
-* Study the parameter tuning with different scoring?
-    * Try 'recall' metric for tuning. Will it decrease the precision significantly? 
-    * Maybe use multiparameter, recall and f1-score for tuning?
+* Use weighted f1-score, with more weight on recall than precision
+    * to compare model performance
+    * and for parameter tuning
+
