@@ -151,7 +151,7 @@ I started modeling with Logistic Regression classifier (LogisticRegression). I i
 
 * The metrics look similar for both training and testing data, just training is a bit better; so slight overfitting.
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
-* The high accuracy score is high, but misleading. It is caused by the imbalanced dataset.
+* The accuracy score is high, but misleading. It is caused by the imbalanced dataset.
 
 Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
 
