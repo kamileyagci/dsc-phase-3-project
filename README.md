@@ -380,6 +380,12 @@ Characteristic of churn customers:
 * The churn customers have more customer service calls than continuous customers.
 * The churn customers have more total day minutes than continuous customers.
  
+## Business Recommendations
+
+* Improve the international plan to keep/attract customers
+* Improve customer service center for better customer satisfaction
+* Offer a discounted  plan with high total day minutes
+
 
 ## Future Work
 
