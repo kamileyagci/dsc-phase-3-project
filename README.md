@@ -153,6 +153,8 @@ I started modeling with Logistic Regression classifier (LogisticRegression). I i
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
 * The accuracy score is high, but misleading. It is caused by the imbalanced dataset.
 
+**Class Imbalance**
+
 Class imbalance effects the performance of the classification model. I have looked at the class distributions for the whole data: train + test:
 
 | | Value Counts in whole dataset | Normalized|
@@ -173,18 +175,25 @@ I have then reapplied the Logistic Regression, using the resampled training data
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Train | 0.49 | .75 | 0.36 | 0.78
-| Test | 0.52 | .78 | 0.39 | 0.79
+| Train | 0.80 | .81 | 0.79 | 0.80
+| Test | 0.51 | .77 | 0.38 | 0.78
 
-After resampling, the Logistic Regression Model performance (f1-score and recall) is clearly improved.
+* After resampling, the Logistic Regression Model performance is clearly improved.
+* The performance in training data is better than test data. This is a sign of overfitting.
 
 I initially used the default paremeters for the Logistic Regression model. I then applied parameter tuning with GridSearchCV. It determined the best parameter combination for the given parameter grid. I used the f1-score for tuning. 
 
-The results of parameter tuning:
-* f1-score for test data: 0.5166240409207161
-* Best Parameter Combination: {'C': 0.001, 'solver': 'liblinear'}
+**The results of parameter tuning:**
 
-It looks like the parameter tuning, with the given parameter grid, didn't improve the performance of Logistic Regression much. The f1-score didn't change.
+Best Parameter Combination: {'C': 0.01, 'solver': 'liblinear'}
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.80 | .83 | 0.78 | 0.79
+| Test | 0.51 | .79 | 0.37 | 0.77
+
+* It looks like the parameter tuning, with the given parameter grid, didn't improve the performance much.
+* Overfitting is observed.
 
 ### K-Nearest Neighbors
 
@@ -192,59 +201,88 @@ My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the res
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Train | 0.64 | .99 | 0.47 | 0.84
-| Test | 0.39 | .62 | 0.29 | 0.71
+| Train | 0.92 | 1.00 | 0.85 | 0.91
+| Test | 0.39 | .62 | 0.29 | 0.72
 
-* The performance in training data is better than test data. This is a sign of overfitting.
-* The fitting on resampled training data has a better performance than unsampled data. The f1-score for test increased from 0.15 to 0.39. (The full results for unsampled data is not shown here).
+* The fitting on resampled training data has a better performance. The f1-score for test data increased from 0.15 to 0.39. (The results for resampled data is not shown here, but tested).
+* Overfitting observed.
 
-Then, I used GridSearchCV for parameter tuning. The results of parameter tuning:
-* f1-score for test data: 0.27751196172248804
-* Best Parameter Combination: {'n_neighbors': 1, 'p': 4}
+Then, I used GridSearchCV for parameter tuning. 
 
-Parameter tuning, with the given parameter ranges, didn't improve the KNN model performance. Actually, f1-score decreased. Why? 
+**The results of parameter tuning:**
+
+Best Parameter Combination: {'n_neighbors': 4, 'p': 1}
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.97 | 0.99 | 0.94 | 0.97
+| Test | 0.35 | .39 | 0.32 | 0.79
+
+* Parameter tuning, with the given parameter ranges, didn't improve the KNN model performance.
+* Overfitting observed.
 
 ### Decision Tress
+
 I firstly used DecisionTreeClassifier with default parameters, then applied GridSearchCV to find the optimum parameteres.
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.75 | .75 | 0.75 | 0.93
+| Test | 0.64 | .67 | 0.62 | 0.89
 
-The results of parameter tuning:
-* f1-score for test data: 0.8088888888888889
-* Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'min_samples_split': 6}
+**The results of parameter tuning:**
 
-The parameter tuning significantly improved the Decision Trees performance.
+Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'min_samples_split': 2}
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 1.00 | 1.00 | 1.00 | 1.00
+| Test | 0.64 | .67 | 0.62 | 0.89
+
+* The parameter tuning improved the Decision Trees performance a little.
+* Overfitting observed.
 
 ### Random Forests
+
 Next, I used ensemble method Random Forests (RandomForestClassifier), which uses DecisionTreeClassifier.
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.77 | .63 | 0.98 | 0.94
+| Test | 0.75 | .71 | 0.79 | 0.93
 
-The results of parameter tuning:
-* f1-score on test data: 0.7326732673267325
-* Best Parameter Combination: {'criterion': 'gini', 'max_depth': None, 'max_features': 8, 'min_samples_split': 3, 'n_estimators': 100}
+***The results of parameter tuning:**
 
-The paremeter tuning didn't improve the performance of Random Forest model.
+Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'max_features': 8, 'min_samples_split': 6, 'n_estimators': 10}
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.90 | 0.89 | 0.92 | 0.91
+| Test | 0.65 | .69 | 0.61 | 0.89
+
+* The paremeter tuning didn't improve the performance of Random Forest model.
+* Overfitting observed.
 
 ### XGBoost
+
 Last, I used another ensemble method XGBoost (XGBClassifier).
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.83 | .74 | 0.94 | 0.95
+| Test | 0.81 | .73 | 0.90 | 0.95
 
-The results of parameter tuning:
-* f1-score on test data: 0.8288288288288288
-* Best Parameter Combination: {'learning_rate': 0.1, 'max_depth': 10, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
+**The results of parameter tuning:**
 
-The parameter tuning didn't effect the XGBoost performance much.
+Best Parameter Combination: {'learning_rate': 0.1, 'max_depth': 6, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
+
+| | f1-score | recall | precision | accuracy |
+| :- | -: | :-: | :-: | :-: |
+| Train | 0.99 | 0.98 | 1.00 | 0.99
+| Test | 0.81 | .75 | 0.89 | 0.95
+
+* The parameter tuning didn't effect the XGBoost performance much.
+* Overfitting observed.
 
 ### Compare the models
 
@@ -257,7 +295,7 @@ I also plotted ROC curves and calculated AUC for each model.
 * ROC: Receiver Operating Characteristic curve illustrates the true positive rate against the false positive rate.
 * AUC: Area Under Curve
 
-I used the optimal/best parameter set selected by the GridSearchCV to instantiate my models.
+I used the optimal/best parameter set to instantiate my models. For some models, the GridSearchCV selected the parameters which causes large ovefitting; so low performance on test data. I used Default parameters for these models.
 
 #### The evaluation metrics and ROC Curve for Training data:
 
@@ -272,49 +310,75 @@ I used the optimal/best parameter set selected by the GridSearchCV to instantiat
 ![ROC-Test](/images/ROC_Curve_Testing.png)
 
 
-## Interpret
-
 All of my models showed some pattern for customer decision on stop or continue doing business. They also did predictions to identify the customers who will discontinue service (churn customers).  
 
 Which model is best on identinfying churn customers?
 
-I used the test data evaluation results to do model comparisons and choose the final model.
+According to the test data evaluation metrics, the XGBoost classifier has overall best performance. It also has the best 'recall' and 'f1 score', which matters most for my study.
 
-Here are my observations based on evaluation metrics and AUC:
-* Overall performance: Decision Trees, Random Forest and XGBoost are top three.
-* f1-score: Decision Trees, Random Forest and XGBoost are best
-* recall: Decision Trees and XGBoost have better scores
-* precision: Random Forest and XGBoost are best
-* accuracy: Decision Trees, Random Forest and XGBoost are top three
-* AUC: Random Forest and XGBoost have better value
+I choose the XGBoost Classiffier as the best model.
 
-The results showed that XGBoost classifier has the best performance in all aspects. It also has the best 'recall' and 'f1-score', which matters most for my study. 
 
-**I choose the XGBoost model as my final model.**
+### Overfitting in XGBoost model
+
+The XGBoost model performed better in training data than the test data. This is overfitting. The decreasing the 'max_depth' can help to minimize the overfitting. I plotted ROC curve for several max_depth values to observe the overfitting.
+
+<img src="/images/ROC_Curve_XGBoost_maxDepth.png"/>
+
+The overfitting decreased a little bit, when max_depth is 4 or 5. The performance of the model with max_depth = 5 is better. I decide on the optimum max_depth = 5.
+
+
+### Final Model
+
+I create my final model with XGBoost Classifier with the below parameters.
+
+{'learning_rate': 0.1, 'max_depth': 5, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
 
 The evaluation metrics for final, XGBoost model:
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Test | 0.83 | .74 | 0.95 | 0.95
+| Train | 0.98 | 0.98 | 0.98 | 0.99
+| Test | 0.83 | .78 | 0.88 | 0.95
 
-* The final model successfully indentifies the 74% of the true churn customers. (recall)
-* Among the model predicted churn customers, 95% of them are true churn customers. (precision)
-* The Harmonic Mean of Precision and Recall (f1-score) is 83%.
-
-('churn': activity of customers leaving the company and discarding the services offered)
-
-The confusion matrix for final, XGBoost model:
+The confusion matrix for final model:
 
 <img src="/images/confusion_matrix_XGB.png" width=550/>
 
-* Final model identification statistics on test data:
-    * Number of true positives: 92
-    * Number of true negatives: 704
-    * Number of false positives: 5
-    * Number of false negatives: 33
-* The final model identifies 92 out of 125 churn customers correctly (74% recall).
-* 92 out of 97 predicted  churn customers are real churn (95% precision).
+The top 10 important features according to the final model:
+
+<img src="/images/importantFeatures.png" width=550/>
+
+For churn=0 and churn=1 data, the distribution of top 5 important features are plotted:
+
+'international plan', 'voice mail plan', 'number vmail messages', 'customer service calls', 'total day minutes'
+
+<img src="/images/histograms_importantFeatures.png">
+
+
+## Interpret
+
+The summary of Final Model performance:
+* It successfully indentifies the 78% of the true churn customers. (recall)
+* Among the model predicted churn customers, 88% of them are true churn customers. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 83%.
+
+
+The identification numbers on test data:
+* Identification numbers:
+    * Number of true positives: 97
+    * Number of true negatives: 696
+    * Number of false positives: 13
+    * Number of false negatives: 28
+* It identifies 97 out of 125 churn customers correctly.
+* 97 out of 110 predicted  churn customers are real churn.
+
+Characteristic of churn customers:
+* The churn customers are more likely to have international plan than continuous customers.
+* The churn customers are less likely to have voice mail plan than continuous customers.
+* The churn customers have less voice mail messages than continuous customers (as a result of less voice mail plan)
+* The churn customers have more customer service calls than continuous customers.
+* The churn customers have more total day minutes than continuous customers.
  
 
 ## Future Work
