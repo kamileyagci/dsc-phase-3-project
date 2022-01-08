@@ -146,8 +146,8 @@ I started modeling with Logistic Regression classifier (LogisticRegression). I i
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Train | 0.37 | .27 | 0.64 | 0.85
-| Test | 0.32 | .22 | 0.56 | 0.86
+| Train | 0.37 | 0.27 | 0.64 | 0.85
+| Test | 0.32 | 0.22 | 0.56 | 0.86
 
 * The metrics look similar for both training and testing data, just training is a bit better; so slight overfitting.
 * The precision - recall - f1 scores are low (for churn=1), so the model prediction performance is not good.
@@ -175,8 +175,8 @@ I have then reapplied the Logistic Regression, using the resampled training data
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Train | 0.80 | .81 | 0.79 | 0.80
-| Test | 0.51 | .77 | 0.38 | 0.78
+| Train | 0.80 | 0.81 | 0.79 | 0.80
+| Test | 0.51 | 0.77 | 0.38 | 0.78
 
 * After resampling, the Logistic Regression Model performance is clearly improved.
 * The performance in training data is better than test data. This is a sign of overfitting.
@@ -190,7 +190,7 @@ Best Parameter Combination: {'C': 0.01, 'solver': 'liblinear'}
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.80 | .83 | 0.78 | 0.79
-| Test | 0.51 | .79 | 0.37 | 0.77
+| Test | 0.51 | 0.79 | 0.37 | 0.77
 
 * It looks like the parameter tuning, with the given parameter grid, didn't improve the performance much.
 * Overfitting is observed.
@@ -202,7 +202,7 @@ My next classifier is K-Nearest Neighbors (KNeighborsClassifier). I used the res
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.92 | 1.00 | 0.85 | 0.91
-| Test | 0.39 | .62 | 0.29 | 0.72
+| Test | 0.39 | 0.62 | 0.29 | 0.72
 
 * The fitting on resampled training data has a better performance. The f1-score for test data increased from 0.15 to 0.39. (The results for resampled data is not shown here, but tested).
 * Overfitting observed.
@@ -216,7 +216,7 @@ Best Parameter Combination: {'n_neighbors': 4, 'p': 1}
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.97 | 0.99 | 0.94 | 0.97
-| Test | 0.35 | .39 | 0.32 | 0.79
+| Test | 0.35 | 0.39 | 0.32 | 0.79
 
 * Parameter tuning, with the given parameter ranges, didn't improve the KNN model performance.
 * Overfitting observed.
@@ -228,7 +228,7 @@ I firstly used DecisionTreeClassifier with default parameters, then applied Grid
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.64 | .67 | 0.62 | 0.89
+| Test | 0.64 | 0.67 | 0.62 | 0.89
 
 **The results of parameter tuning:**
 
@@ -237,7 +237,7 @@ Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'min_samples_s
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.90 | 0.87 | 0.94 | 0.91
-| Test | 0.69 | .70 | 0.68 | 0.91
+| Test | 0.69 | 0.70 | 0.68 | 0.91
 
 * The parameter tuning improved the Decision Trees performance a little.
 * Overfitting observed.
@@ -249,7 +249,7 @@ Next, I used ensemble method Random Forests (RandomForestClassifier), which uses
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.75 | .71 | 0.79 | 0.93
+| Test | 0.75 | 0.71 | 0.79 | 0.93
 
 ***The results of parameter tuning:**
 
@@ -258,7 +258,7 @@ Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'max_features'
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.90 | 0.89 | 0.92 | 0.91
-| Test | 0.65 | .69 | 0.61 | 0.89
+| Test | 0.65 | 0.69 | 0.61 | 0.89
 
 * The paremeter tuning didn't improve the performance of Random Forest model.
 * Overfitting observed.
@@ -270,7 +270,7 @@ Last, I used another ensemble method XGBoost (XGBClassifier).
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.81 | .73 | 0.90 | 0.95
+| Test | 0.81 | 0.73 | 0.90 | 0.95
 
 **The results of parameter tuning:**
 
@@ -279,7 +279,7 @@ Best Parameter Combination: {'learning_rate': 0.1, 'max_depth': 6, 'min_child_we
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.99 | 0.98 | 1.00 | 0.99
-| Test | 0.81 | .75 | 0.89 | 0.95
+| Test | 0.81 | 0.75 | 0.89 | 0.95
 
 * The parameter tuning didn't effect the XGBoost performance much.
 * Overfitting observed.
@@ -339,7 +339,7 @@ I create my final model with XGBoost Classifier with the below parameters.
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.98 | 0.98 | 0.98 | 0.99
-| Test | 0.83 | .78 | 0.88 | 0.95
+| Test | 0.83 | 0.78 | 0.88 | 0.95
 
 #### The confusion matrix for final model:
 
