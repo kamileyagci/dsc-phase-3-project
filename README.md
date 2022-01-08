@@ -323,7 +323,7 @@ I choose the XGBoost Classiffier as the best model.
 
 The XGBoost model performed better in training data than the test data. This is overfitting. The decreasing the 'max_depth' can help to minimize the overfitting. I plotted ROC curve for several max_depth values to observe the overfitting.
 
-<img src="/images/ROC_Curve_XGBoost_maxDepth.png" width=800/>
+<img src="/images/ROC_Curve_XGBoost_maxDepth_zoom.png" width=800/>
 
 The overfitting decreased a little bit, when max_depth is 4 or 5. The performance of the model with max_depth = 5 is better. I decide on the optimum max_depth = 5.
 
