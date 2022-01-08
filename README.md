@@ -236,8 +236,8 @@ Best Parameter Combination: {'criterion': 'gini', 'max_depth': 6, 'min_samples_s
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
-| Train | 1.00 | 1.00 | 1.00 | 1.00
-| Test | 0.64 | .67 | 0.62 | 0.89
+| Train | 0.90 | 0.87 | 0.94 | 0.91
+| Test | 0.69 | .70 | 0.68 | 0.91
 
 * The parameter tuning improved the Decision Trees performance a little.
 * Overfitting observed.
@@ -347,11 +347,9 @@ The confusion matrix for final model:
 
 The top 10 important features according to the final model:
 
-<img src="/images/importantFeatures.png" width=550/>
+<img src="/images/importantFeatures.png" width=300/>
 
 For churn=0 and churn=1 data, the distribution of top 5 important features are plotted:
-
-'international plan', 'voice mail plan', 'number vmail messages', 'customer service calls', 'total day minutes'
 
 <img src="/images/histograms_importantFeatures.png">
 
