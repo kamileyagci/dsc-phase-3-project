@@ -345,7 +345,9 @@ I create my final model with XGBoost Classifier with the below parameters.
 
 <img src="/images/confusion_matrix_XGB.png" width=550/>
 
-**The top 10 important features according to the final model:**
+**Important Features for the final model:**
+
+The top 10 important features according to the final model:
 
 <img src="/images/importantFeatures.png" width=350/>
 
