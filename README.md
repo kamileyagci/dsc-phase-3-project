@@ -323,7 +323,7 @@ I choose the XGBoost Classiffier as the best model.
 
 The XGBoost model performed better in training data than the test data. This is overfitting. The decreasing the 'max_depth' can help to minimize the overfitting. I plotted ROC curve for several max_depth values to observe the overfitting.
 
-<img src="/images/ROC_Curve_XGBoost_maxDepth.png"/>
+![ROC_Curve_maxDepth](/images/ROC_Curve_XGBoost_maxDepth.png)
 
 The overfitting decreased a little bit, when max_depth is 4 or 5. The performance of the model with max_depth = 5 is better. I decide on the optimum max_depth = 5.
 
@@ -347,7 +347,7 @@ The confusion matrix for final model:
 
 The top 10 important features according to the final model:
 
-<img src="/images/importantFeatures.png" width=300/>
+<img src="/images/importantFeatures.png" width=350/>
 
 For churn=0 and churn=1 data, the distribution of top 5 important features are plotted:
 
