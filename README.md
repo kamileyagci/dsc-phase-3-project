@@ -334,18 +334,18 @@ I create my final model with XGBoost Classifier with the below parameters.
 
 {'learning_rate': 0.1, 'max_depth': 5, 'min_child_weight': 1, 'n_estimators': 100, 'subsample': 0.7}
 
-**The evaluation metrics for final, XGBoost model:**
+#### The evaluation metrics for final, XGBoost model:
 
 | | f1-score | recall | precision | accuracy |
 | :- | -: | :-: | :-: | :-: |
 | Train | 0.98 | 0.98 | 0.98 | 0.99
 | Test | 0.83 | .78 | 0.88 | 0.95
 
-**The confusion matrix for final model:**
+#### The confusion matrix for final model:
 
 <img src="/images/confusion_matrix_XGB.png" width=550/>
 
-**Important Features for the final model:**
+#### Important Features for the final model:
 
 The top 10 important features according to the final model:
 
